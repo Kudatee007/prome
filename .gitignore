@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vite/
+.env
+.env.*.local
+api/.tmp/
+api/build/
+app/coverage/
+
