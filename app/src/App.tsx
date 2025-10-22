@@ -1,13 +1,14 @@
-import Home from "./features/Home";
-import Footer from "./layout/Footer";
+import Register from "./auth/Register";
+import Login from "./auth/Login";
 import HeaderNav from "./layout/HeaderNav";
 
 function App() {
   return (
     <>
       <HeaderNav />
-      <Home />
-      <Footer />
+      {/* <Home />
+      <Footer /> */}
+      <Login />
     </>
   );
 }
