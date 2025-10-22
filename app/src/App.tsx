@@ -1,5 +1,5 @@
-import ServiceCard from "./component/ServiceCard";
 import Home from "./features/Home";
+import Footer from "./layout/Footer";
 import HeaderNav from "./layout/HeaderNav";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
       <HeaderNav />
       <Home />
-      {/* <ServiceCard /> */}
+      <Footer />
     </>
   );
 }
