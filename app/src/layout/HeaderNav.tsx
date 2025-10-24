@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import promeLogo from "../assets/prome-logo.png";
 import briefcase from "../assets/briefcase.png";
 import hero from "../assets/hero.png";
@@ -6,6 +7,11 @@ import { CiMenuBurger } from "react-icons/ci";
 
 const HeaderNav = () => {
   const [openMenu, setOpenMenu] = useState(true);
+  const location = useLocation();
+  const hideHeroRoutes = ["/login", "/signup", "/onboarding", "/dashboard"];
+  const shouldHideHero = hideHeroRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
 
   // Close on Escape (mobile menu)
   useEffect(() => {
@@ -19,7 +25,7 @@ const HeaderNav = () => {
   const toggleMenu = () => setOpenMenu((v) => !v);
 
   return (
-    <header className="h-screen bg-[#EEEEEE]">
+    <header className={!shouldHideHero ? "h-screen bg-[#EEEEEE]" : ""}>
       <div className="relative flex justify-between items-center py-3 lg:py-5 px-4 lg:px-25 lg:border-b border-[#2F2F2F4D] bg-white">
         <a href="/" className="inline-flex items-center gap-2">
           <img
@@ -70,39 +76,41 @@ const HeaderNav = () => {
       </div>
 
       {/* hero section */}
-      <section className="pt-26 lg:pt-12 px-4 flex flex-col lg:flex-row justify-center items-center gap-20">
-        <div className="space-y-6">
-          <span className="text-[22px] font-semibold text-blue-100 border-b-2">
-            HIRE A PRO
-          </span>
-          <h1 className="text-[28px] font-extrabold leading-9 pt-3">
-            Find local professionals for any home project
-          </h1>
-          <div className="lg:grid lg:grid-cols-[80%_auto] lg:items-start">
-            <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[80%_auto] w-full">
-              <input
-                type="text"
-                name=""
-                id=""
-                className="border border-[#2F2F2F4D] w-full py-3 rounded-md lg:rounded-tl-md lg:rounded-bl-md lg:rounded-tr-none lg:rounded-br-none px-2"
-                placeholder="What service do you need?"
-              />
-              <select
-                name=""
-                id=""
-                className="border border-[#2F2F2F4D] py-3 px-2 rounded-md lg:rounded-none w-full"
-              >
-                <option value="lagos">Lagos</option>
-                <option value="abuja">Abuja</option>
-              </select>
+      {!shouldHideHero && (
+        <section className="pt-26 lg:pt-12 px-4 flex flex-col lg:flex-row justify-center items-center gap-20">
+          <div className="space-y-6">
+            <span className="text-[22px] font-semibold text-blue-100 border-b-2">
+              HIRE A PRO
+            </span>
+            <h1 className="text-[28px] font-extrabold leading-9 pt-3">
+              Find local professionals for any home project
+            </h1>
+            <div className="lg:grid lg:grid-cols-[80%_auto] lg:items-start">
+              <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[80%_auto] w-full">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  className="border border-[#2F2F2F4D] w-full py-3 rounded-md lg:rounded-tl-md lg:rounded-bl-md lg:rounded-tr-none lg:rounded-br-none px-2"
+                  placeholder="What service do you need?"
+                />
+                <select
+                  name=""
+                  id=""
+                  className="border border-[#2F2F2F4D] py-3 px-2 rounded-md lg:rounded-none w-full"
+                >
+                  <option value="lagos">Lagos</option>
+                  <option value="abuja">Abuja</option>
+                </select>
+              </div>
+              <button className="bg-blue-100 py-[13px] w-full mt-6 lg:mt-0 text-white rounded lg:rounded-none lg:rounded-tr-md lg:rounded-br-md">
+                Get Started
+              </button>
             </div>
-            <button className="bg-blue-100 py-[13px] w-full mt-6 lg:mt-0 text-white rounded lg:rounded-none lg:rounded-tr-md lg:rounded-br-md">
-              Get Started
-            </button>
           </div>
-        </div>
-        <img src={hero} alt="" className="w-auto h-[40vw] hidden lg:block" />
-      </section>
+          <img src={hero} alt="" className="w-auto h-[40vw] hidden lg:block" />
+        </section>
+      )}
     </header>
   );
 };
