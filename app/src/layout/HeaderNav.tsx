@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import promeLogo from "../assets/prome-logo.png";
 import briefcase from "../assets/briefcase.png";
 import hero from "../assets/hero.png";
 import { CiMenuBurger } from "react-icons/ci";
 
-const HeaderNav = () => {
+interface HeaderNavProps {
+  showHero?: boolean;
+}
+
+const HeaderNav = ({showHero = false}: HeaderNavProps) => {
   const [openMenu, setOpenMenu] = useState(true);
-  const location = useLocation();
-  const hideHeroRoutes = ["/login", "/signup", "/onboarding", "/dashboard"];
-  const shouldHideHero = hideHeroRoutes.some((route) =>
-    location.pathname.startsWith(route)
-  );
+
 
   // Close on Escape (mobile menu)
   useEffect(() => {
@@ -25,7 +24,7 @@ const HeaderNav = () => {
   const toggleMenu = () => setOpenMenu((v) => !v);
 
   return (
-    <header className={!shouldHideHero ? "h-screen bg-[#EEEEEE]" : ""}>
+    <header className={showHero ? "h-screen bg-[#EEEEEE]" : ""}>
       <div className="relative flex justify-between items-center py-3 lg:py-5 px-4 lg:px-25 lg:border-b border-[#2F2F2F4D] bg-white">
         <a href="/" className="inline-flex items-center gap-2">
           <img
@@ -76,7 +75,7 @@ const HeaderNav = () => {
       </div>
 
       {/* hero section */}
-      {!shouldHideHero && (
+      {showHero && (
         <section className="pt-26 lg:pt-12 px-4 flex flex-col lg:flex-row justify-center items-center gap-20">
           <div className="space-y-6">
             <span className="text-[22px] font-semibold text-blue-100 border-b-2">

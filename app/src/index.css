@@ -3,12 +3,14 @@
 @theme {
   --color-black-100: #2f2f2f;
   --color-black-200: #000000;
+  --color-black-300: #2f2f2f;
   --color-blue-100: #00b8f1;
 }
 :root {
   font-family: Montserrat;
 }
-h1, h2 {
+h1,
+h2 {
   font-family: Catamaran;
   font-weight: 700;
 }
