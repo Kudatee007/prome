@@ -83,7 +83,7 @@ const Register: React.FC = () => {
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">
-      <section className="w-full max-w-[620px] bg-white p-8">
+      <section className="w-full max-w-[620px] bg-white p-8 shadow-sm">
         <h2>Create your account</h2>
         <form
           data-testid="register-form"

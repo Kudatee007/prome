@@ -69,6 +69,10 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
             <li>
               <a href="/login">Log In</a>
             </li>
+            <li className="flex items-center gap-2">
+              <p className="h-[38px] w-[38px] bg-blue-100 rounded-full flex justify-center items-center">D</p>
+              <span>Demilade</span>
+            </li>
           </ul>
         </nav>
       </div>
