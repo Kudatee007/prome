@@ -8,9 +8,8 @@ interface HeaderNavProps {
   showHero?: boolean;
 }
 
-const HeaderNav = ({showHero = false}: HeaderNavProps) => {
+const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
   const [openMenu, setOpenMenu] = useState(true);
-
 
   // Close on Escape (mobile menu)
   useEffect(() => {
@@ -24,8 +23,8 @@ const HeaderNav = ({showHero = false}: HeaderNavProps) => {
   const toggleMenu = () => setOpenMenu((v) => !v);
 
   return (
-    <header className={showHero ? "h-screen bg-[#EEEEEE]" : ""}>
-      <div className="relative flex justify-between items-center py-3 lg:py-5 px-4 lg:px-25 lg:border-b border-[#2F2F2F4D] bg-white">
+    <header className={showHero ? "h-screen bg-[#EEEEEE]" : "pb-20"}>
+      <div className="fixed flex justify-between items-center py-3 lg:py-5 px-4 lg:px-25 lg:border-b border-[#2F2F2F4D] bg-white w-full z-200">
         <a href="/" className="inline-flex items-center gap-2">
           <img
             src={promeLogo}
@@ -53,12 +52,12 @@ const HeaderNav = ({showHero = false}: HeaderNavProps) => {
         >
           <ul className="flex flex-col lg:flex-row justify-center items-center py-10 lg:py-3 gap-6 lg:gap-12 text-lg text-black-100 font-normal">
             <li className="flex items-center gap-2">
-              <img src={briefcase} alt="" />
+              <img src={briefcase} alt="" className="w-5 h-5"/>
               <a
-                href="/onboarding"
+                href="/professionals"
                 className="text-lg text-blue-100 font-normal"
               >
-                Join as a Pro
+                Hire a pro
               </a>
             </li>
             <li>
@@ -76,7 +75,7 @@ const HeaderNav = ({showHero = false}: HeaderNavProps) => {
 
       {/* hero section */}
       {showHero && (
-        <section className="pt-26 lg:pt-12 px-4 flex flex-col lg:flex-row justify-center items-center gap-20">
+        <section className="pt-26 lg:pt-36 px-4 flex flex-col lg:flex-row justify-center items-center gap-20">
           <div className="space-y-6">
             <span className="text-[22px] font-semibold text-blue-100 border-b-2">
               HIRE A PRO
@@ -90,24 +89,28 @@ const HeaderNav = ({showHero = false}: HeaderNavProps) => {
                   type="text"
                   name=""
                   id=""
-                  className="border border-[#2F2F2F4D] w-full py-3 rounded-md lg:rounded-tl-md lg:rounded-bl-md lg:rounded-tr-none lg:rounded-br-none px-2"
+                  className="border border-gray-100 w-full py-3 rounded-md lg:rounded-tl-md lg:rounded-bl-md lg:rounded-tr-none lg:rounded-br-none px-2 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:shadow-lg transition-all bg-white"
                   placeholder="What service do you need?"
                 />
                 <select
                   name=""
                   id=""
-                  className="border border-[#2F2F2F4D] py-3 px-2 rounded-md lg:rounded-none w-full"
+                  className="border border-gray-100 py-3 px-2 rounded-md lg:rounded-none w-full shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:shadow-lg transition-all bg-white"
                 >
                   <option value="lagos">Lagos</option>
                   <option value="abuja">Abuja</option>
                 </select>
               </div>
-              <button className="bg-blue-100 py-[13px] w-full mt-6 lg:mt-0 text-white rounded lg:rounded-none lg:rounded-tr-md lg:rounded-br-md">
+              <button className="bg-blue-100 py-[13px] w-full mt-6 lg:mt-0 text-white rounded lg:rounded-none lg:rounded-tr-md lg:rounded-br-md hover:bg-blue-600 hover:shadow-lg transition-all shadow-md">
                 Get Started
               </button>
             </div>
           </div>
-          <img src={hero} alt="" className="w-auto h-[40vw] hidden lg:block" />
+          <img
+            src={hero}
+            alt="Hero image"
+            className="w-auto h-[70vh] hidden lg:block object-cover"
+          />
         </section>
       )}
     </header>

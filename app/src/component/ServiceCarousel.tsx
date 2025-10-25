@@ -1,14 +1,22 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import ServiceCard from "./ServiceCard";
+import { useGetServicesByCategoryQuery } from "@/api/servicesApi";
 
-const ServiceCarousel = () => {
+interface ServiceCarouselProps {
+  category: string;
+  title: string;
+}
+
+const ServiceCarousel = ({ category, title }: ServiceCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const { data: services, isLoading } = useGetServicesByCategoryQuery(category);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -21,33 +29,36 @@ const ServiceCarousel = () => {
     emblaApi.on("select", onSelect);
     onSelect(); // initial
   }, [emblaApi, onSelect]);
+
+  if (isLoading) return <p>Loading {title}...</p>;
+  if (!services || services.length === 0) return null;
+
   return (
     <div>
       <section>
-        <h2 className="text-black-100 text-2xl pb-6 font-semibold">
-          Popular Services
-        </h2>
+        <h2 className="text-black-100 text-2xl pb-6 font-semibold">{title}</h2>
         <div className="embla overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex">
-            {[...Array(10)].map((_, i) => (
+            {services.map((service) => (
               <div
-                key={i}
+                key={service.documentId}
                 className="
-              embla__slide 
-              min-w-0
-              flex items-center justify-center
-              p-[6px]
-              flex-[0_0_90%]   /* mobile: 1 slide per view */
-              lg:flex-[0_0_20%] /* desktops: ~3.5 slides */
-            "
+                embla__slide 
+                min-w-0
+                flex items-center justify-center
+                p-1.5
+                flex-[0_0_90%]      /* mobile: 1 slide */
+    md:flex-[0_0_33.333%]  /* tablet: 3 slides */
+               xl:flex-[0_0_20%] /* desktops: ~3.5 slides */
+              "
               >
-                <ServiceCard />
+                <ServiceCard service={service} />
               </div>
             ))}
           </div>
 
           {/* Pagination dots — visible only on mobile */}
-          <div className="flex justify-center mt-4 gap-2 md:hidden">
+          <div className="flex justify-center mt-4 gap-2">
             {scrollSnaps.map((_, i) => (
               <button
                 key={i}
