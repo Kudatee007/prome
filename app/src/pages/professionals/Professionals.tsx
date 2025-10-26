@@ -1,47 +1,40 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import avatar from "../../assets/avatar.png";
 import { AiOutlineTrophy } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { LuClock9 } from "react-icons/lu";
 import { IoPersonSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useGetProfessionalsQuery } from "@/api/prosApi";
+import { Link, useSearchParams } from "react-router-dom";
+import { useGetProfessionalsQuery, useGetLocationsQuery } from "@/api/prosApi";
 import { toAbsoluteUrl } from "@/utils/strapi";
 
 const Professionals = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [selectedLocation, setSelectedLocation] = useState(searchParams.get("location") || "");
 
-  const { data: pros, isLoading, error } = useGetProfessionalsQuery();
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (searchQuery) params.append("search", searchQuery);
+    if (selectedLocation) params.append("location", selectedLocation);
+    setSearchParams(params, { replace: true });
+  }, [searchQuery, selectedLocation, setSearchParams]);
 
-  const uniqueLocations = useMemo(() => {
-    if (!pros) return [];
-    
-    const locations = pros
-      .map((pro) => pro.location || pro.address)
-      .filter((loc): loc is string => Boolean(loc));
-    
-    return [...new Set(locations)].sort();
-  }, [pros]);
+  const {
+    data: pros,
+    isLoading,
+    error,
+  } = useGetProfessionalsQuery(
+    searchQuery || selectedLocation
+      ? {
+          search: searchQuery || undefined,
+          location: selectedLocation || undefined,
+        }
+      : undefined
+  );
 
-  const filteredPros = useMemo(() => {
-    if (!pros) return [];
-
-    return pros.filter((pro) => {
-      const matchesSearch =
-        searchQuery === "" ||
-        pro.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        pro.category?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        pro.about?.toLowerCase().includes(searchQuery.toLowerCase());
-
-      const matchesLocation =
-        selectedLocation === "" ||
-        pro.location?.toLowerCase() === selectedLocation.toLowerCase() ||
-        pro.address?.toLowerCase().includes(selectedLocation.toLowerCase());
-
-      return matchesSearch && matchesLocation;
-    });
-  }, [pros, searchQuery, selectedLocation]);
+  // Fetch all unique locations
+  const { data: locations } = useGetLocationsQuery();
 
   if (isLoading) return <p data-testid="loading-state">Loading…</p>;
   if (error) {
@@ -69,7 +62,7 @@ const Professionals = () => {
             className="border border-gray-100 py-3 px-2 rounded-md lg:rounded-none w-full shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:shadow-lg transition-all bg-white"
           >
             <option value="">All Locations</option>
-            {uniqueLocations.map((location) => (
+            {locations?.map((location) => (
               <option key={location} value={location}>
                 {location}
               </option>
@@ -80,11 +73,9 @@ const Professionals = () => {
 
       <div className="flex justify-between items-center py-6">
         <p className="font-normal text-base">
-          {filteredPros.length === 0
+          {!pros || pros.length === 0
             ? "No professionals found"
-            : `${filteredPros.length} professional${
-                filteredPros.length !== 1 ? "s" : ""
-              } found`}
+            : `${pros.length} professional${pros.length !== 1 ? "s" : ""} found`}
         </p>
         {(searchQuery || selectedLocation) && (
           <button
@@ -102,7 +93,7 @@ const Professionals = () => {
       <p className="text-center py-6 font-normal text-base">
         The House Cleaners near you
       </p>
-      {filteredPros.length === 0 ? (
+      {pros.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg shadow-sm">
           <p className="text-gray-500 text-lg">
             No professionals match your search criteria
@@ -112,7 +103,7 @@ const Professionals = () => {
           </p>
         </div>
       ) : (
-        filteredPros.map((pro) => {
+        pros.map((pro) => {
           const {
             id,
             name,
