@@ -12,6 +12,8 @@ const mockServiceWithImage = {
   about:
     "We invest in continuous learning, modern tooling, and rigorous QA to ensure every project meets a high standard of excellence.",
   address: "52 Sapele Rd, GRA, Kano, Nigeria",
+  "phone": "+2348030001001",
+  "email": "info@kelechiokafor.com",
   employees: 2,
   hires: 582,
   introduction:

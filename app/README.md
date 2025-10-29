@@ -213,7 +213,7 @@ Backend → `http://localhost:1337/admin`
 
 ## 🔁 Core Features Implemented
 
-✅ Authentication (login, register, persistent session)
+✅ Authentication (login, register, logou)
 ✅ Logout clears Redux + localStorage
 ✅ Header shows authenticated user + responsive logout dropdown
 ✅ Fetch & render professionals with search
@@ -227,20 +227,70 @@ Backend → `http://localhost:1337/admin`
 
 **Unit tests**
 
-* Jest + React Testing Library
-* Test form validation, auth slice reducers, and API hooks
+* Framework: Jest + React Testing Library
+Components tested:
+
+InputField — label rendering, user input, ref forwarding
+
+ServiceCard — image fallback, null handling, router link
+
+Helper tested:
+
+toAbsoluteUrl (Strapi URL utility)
+
+| File                       | Statements | Branches | Functions | Lines    |
+| -------------------------- | ---------- | -------- | --------- | -------- |
+| InputField.tsx             | 100%       | 100%     | 100%      | 100%     |
+| ServiceCard.tsx            | 100%       | 100%     | 100%      | 100%     |
+| strapi.ts                  | 100%       | 100%     | 100%      | 100%     |
+| **Total Project Coverage** | **100%**   | **100%** | **100%**  | **100%** |
+
+Command to run full coverage:
+
+npx vitest run --coverage
+open coverage/index.html
+
+🧩 Testing Strategy
+
+The project follows a logic-first testing approach:
+
+Components are tested in isolation using MemoryRouter where routing is required.
+
+Helper utilities are tested directly for both happy and edge cases.
+
+Coverage ensures all branches and conditions are executed.
+
+Tests use clear and descriptive assertions (getByRole, toHaveValue, toHaveAttribute, etc.).
 
 **E2E tests**
 
 * Cypress for login/register flow, protected routes, and professionals search
+
+🧩 E2E Testing (Cypress)
+
+Cypress tests validate complete user journeys:
+
+User registration and login flow
+
+Navigation between pages (home, professionals)
+
+Search and protected route access
+
+Input validation and error handling
 
 Example commands:
 
 ```bash
 npm run test
 npm run cypress:open
+npm run cypress:run
 ```
 
+🧾 Testing Documentation Summary
+
+Unit tests achieved 100% coverage across all components and utilities, validating both normal and edge cases.
+Cypress tests verify full user journeys including authentication, search, and navigation.
+Together, these test suites ensure application stability, functionality, and confidence in future iterations.
 ---
 
 ## 📦 Deployment

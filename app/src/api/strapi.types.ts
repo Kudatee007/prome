@@ -89,6 +89,8 @@ export type ProfessionalAttrs = {
     employees?: number | null;
     hires?: number | null;
     years_in_business?: number | null;
+    phone_number?: string | null;
+    email?: string | null;
   
     // Strapi timestamps/ids (keep if you use them)
     createdAt: string;

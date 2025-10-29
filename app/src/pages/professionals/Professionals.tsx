@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from "../../assets/avatar.png";
 import { AiOutlineTrophy } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
@@ -109,6 +109,8 @@ const Professionals = () => {
             name,
             about,
             address,
+            phone_number,
+            email,
             location,
             hires,
             years_in_business,
@@ -167,6 +169,20 @@ const Professionals = () => {
                       <IoPersonSharp className="text-blue-100 text-xl" />
                       <span>
                         <strong>Employees:</strong> {employees ?? "—"}
+                      </span>
+                    </li>
+
+                    <li className="flex items-center gap-2">
+                      <IoPersonSharp className="text-blue-100 text-xl" />
+                      <span>
+                        <strong>Employees:</strong> {phone_number ?? "—"}
+                      </span>
+                    </li>
+
+                    <li className="flex items-center gap-2">
+                      <IoPersonSharp className="text-blue-100 text-xl" />
+                      <span>
+                        <strong>Employees:</strong> {email ?? "—"}
                       </span>
                     </li>
                   </ul>
