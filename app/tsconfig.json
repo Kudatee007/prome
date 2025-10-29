@@ -1,7 +1,22 @@
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ],
+//   "compilerOptions": {
+//     "types": ["jest"]
+//   }
+// }
 {
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    // "types": ["jest"]
+    "types": ["vitest/globals"]
+  },
+  "include": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
 }

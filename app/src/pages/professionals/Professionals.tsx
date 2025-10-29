@@ -119,8 +119,6 @@ const Professionals = () => {
           const imgSrc = images?.thumbnail_url ?? images?.image_url ?? "";
           const displayAddress = address ?? location ?? "Not provided";
 
-          console.log(pro);
-
           return (
             <article
               key={id}

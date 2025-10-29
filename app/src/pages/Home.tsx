@@ -1,7 +1,7 @@
 import React from "react";
 import servicesIcon from "../assets/servicesIcons.png";
 import ServiceCarousel from "../component/ServiceCarousel";
-import { useGetAllCategoriesQuery } from "@/api/servicesApi";
+import {useGetAllCategoriesQuery} from "../api/servicesApi";
 import { Link } from "react-router-dom";
 
 const Home = () => {
