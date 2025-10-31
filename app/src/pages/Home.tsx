@@ -1,7 +1,7 @@
 import React from "react";
 import servicesIcon from "../assets/servicesIcons.png";
 import ServiceCarousel from "../component/ServiceCarousel";
-import {useGetAllCategoriesQuery} from "../api/servicesApi";
+import { useGetAllCategoriesQuery } from "../api/servicesApi";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -11,19 +11,32 @@ const Home = () => {
     <div className="">
       <div className="space-y-12 px-4 py-8 lg:px-22 lg:py-10">
         {/* Popular Services */}
-        <ServiceCarousel category="PopularService" title="Popular Services" />
+        <ServiceCarousel
+          category="PopularService"
+          title="Popular Services"
+          data-testid="carousel-PopularService"
+        />
 
         {/* Home Improvement */}
         <ServiceCarousel
           category="Home Improvement"
           title="Home Improvement Services"
+          data-testid="carousel-Home Improvement"
         />
 
         {/* Events Services */}
-        <ServiceCarousel category="EventService" title="Event Services" />
+        <ServiceCarousel
+          category="EventService"
+          title="Event Services"
+          data-testid="carousel-EventService"
+        />
 
         {/* Design & Web Services */}
-        <ServiceCarousel category="WebService" title="Design & Web Services" />
+        <ServiceCarousel
+          category="WebService"
+          title="Design & Web Services"
+          data-testid="carousel-WebService"
+        />
       </div>
 
       {/* Browse all services by category */}
