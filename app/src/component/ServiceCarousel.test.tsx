@@ -1,8 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import ServiceCarousel from "./ServiceCarousel";
 
+// Stable fixture — matches what your component consumes
 const mockServices = [
   {
     id: 1,
@@ -21,42 +22,52 @@ vi.mock("@/api/servicesApi", () => ({
   })),
 }));
 
-vi.mock("embla-carousel-react", () => ({
-  default: () => [
-    () => {},
-    {
-      selectedScrollSnap: () => 0,
-      scrollSnapList: () => [0],
-      scrollTo: () => {},
-      on: () => {},
-      off: () => {},
-    },
-  ],
-}));
+// ⚠️ Important: proper ESM default + full API surface
+vi.mock("embla-carousel-react", () => {
+  const api = {
+    selectedScrollSnap: vi.fn(() => 0),
+    scrollSnapList: vi.fn(() => [0]),
+    scrollTo: vi.fn(),
+    on: vi.fn(),
+    off: vi.fn(),
+  };
+  const ref = vi.fn(); // callback ref
+  return {
+    __esModule: true,
+    default: vi.fn(() => [ref, api] as any),
+  };
+});
 
+// Keep ServiceCard dead-simple so we test the carousel, not the card
 vi.mock("./ServiceCard", () => ({
+  __esModule: true,
   default: ({ service }: any) => <div>{service.name}</div>,
 }));
 
-
 describe("ServiceCarousel Component", () => {
-  it("renders carousel title", () => {
-    render(
-      <BrowserRouter>
-        <ServiceCarousel category="Cleaning" title="Cleaning Services" />
-      </BrowserRouter>
-    );
-    
-    expect(screen.getByText("Cleaning Services")).toBeInTheDocument();
+  beforeEach(() => {
+    vi.clearAllMocks();
+    cleanup();
   });
 
-  it("renders service cards", () => {
+  it("renders carousel title", async () => {
     render(
       <BrowserRouter>
         <ServiceCarousel category="Cleaning" title="Cleaning Services" />
       </BrowserRouter>
     );
-    
-    expect(screen.getByText("House Cleaning")).toBeInTheDocument();
+
+    // findByText waits for the DOM to settle
+    expect(await screen.findByText("Cleaning Services")).toBeInTheDocument();
+  });
+
+  it("renders service cards", async () => {
+    render(
+      <BrowserRouter>
+        <ServiceCarousel category="Cleaning" title="Cleaning Services" />
+      </BrowserRouter>
+    );
+
+    expect(await screen.findByText("House Cleaning")).toBeInTheDocument();
   });
 });

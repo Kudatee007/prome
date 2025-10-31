@@ -45,13 +45,13 @@ export default defineConfig({
         "**/*.config.*",
         "**/node_modules/**",
       ],
-      // all: true, // IMPORTANT: This includes all files, not just tested ones
-      // thresholds: {
-      //   statements: 80,
-      //   branches: 80,
-      //   functions: 80,
-      //   lines: 80,
-      // },
+      all: true, // IMPORTANT: This includes all files, not just tested ones
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
     },
   },
   resolve: {
