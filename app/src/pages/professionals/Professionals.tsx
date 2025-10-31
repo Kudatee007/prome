@@ -10,8 +10,12 @@ import { toAbsoluteUrl } from "@/utils/strapi";
 
 const Professionals = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
-  const [selectedLocation, setSelectedLocation] = useState(searchParams.get("location") || "");
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || ""
+  );
+  const [selectedLocation, setSelectedLocation] = useState(
+    searchParams.get("location") || ""
+  );
 
   useEffect(() => {
     const params = new URLSearchParams();
