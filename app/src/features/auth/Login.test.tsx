@@ -165,4 +165,32 @@ describe('Login Component', () => {
 
     consoleErrorSpy.mockRestore();
   });
+
+  it('displays server error message', () => {
+    mockError = {
+      data: {
+        error: {
+          message: 'Invalid credentials'
+        }
+      }
+    };
+    mockIsLoading = false;
+
+    renderLogin();
+    
+    expect(screen.getByTestId('login-error')).toBeInTheDocument();
+    expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
+  });
+
+  it('displays default error message when error has no message', () => {
+    mockError = {
+      data: {}
+    };
+    mockIsLoading = false;
+
+    renderLogin();
+    
+    expect(screen.getByTestId('login-error')).toBeInTheDocument();
+    expect(screen.getByText('Login failed')).toBeInTheDocument();
+  });
 });

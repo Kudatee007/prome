@@ -72,7 +72,6 @@ export default defineConfig([
 ])
 ``` -->
 
-
 # 🧭 ProLinker — React + TypeScript + Strapi
 
 **ProLinker** is a full-stack web app built with **React + TypeScript (Vite)** on the frontend and **Strapi** as the backend CMS.
@@ -84,19 +83,19 @@ It helps users connect with verified **professionals for hire** while managing a
 
 **Frontend**
 
-* ⚛️ React 18 + TypeScript + Vite
-* 🧰 Redux Toolkit + RTK Query
-* 🎨 TailwindCSS (utility-first styling)
-* 🧪 React Hook Form + Zod (form validation)
-* 🌍 React Router v6 (routing & protected routes)
-* 🧠 Axios-free API handling with RTK Query
+- ⚛️ React 18 + TypeScript + Vite
+- 🧰 Redux Toolkit + RTK Query
+- 🎨 TailwindCSS (utility-first styling)
+- 🧪 React Hook Form + Zod (form validation)
+- 🌍 React Router v6 (routing & protected routes)
+- 🧠 Axios-free API handling with RTK Query
 
 **Backend**
 
-* 🚀 Strapi (Headless CMS)
-* 🗄️ SQLite (dev DB)
-* 🔐 JWT Authentication (`/auth/local`, `/users/me`)
-* 📦 REST API endpoints for `professionals`
+- 🚀 Strapi (Headless CMS)
+- 🗄️ SQLite (dev DB)
+- 🔐 JWT Authentication (`/auth/local`, `/users/me`)
+- 📦 REST API endpoints for `professionals`
 
 ---
 
@@ -135,10 +134,10 @@ It helps users connect with verified **professionals for hire** while managing a
 
 ## 💼 Professionals Feature
 
-* Fetches data from **Strapi `/professionals`** collection
-* Displays: name, location, years in business, employees, image, and bio
-* Integrated **search bar** for filtering professionals
-* Fully responsive card grid layout
+- Fetches data from **Strapi `/professionals`** collection
+- Displays: name, location, years in business, employees, image, and bio
+- Integrated **search bar** for filtering professionals
+- Fully responsive card grid layout
 
 ### Example Strapi `Professional` fields:
 
@@ -204,10 +203,10 @@ Backend → `http://localhost:1337/admin`
 
 ## 🔄 API Integration (RTK Query)
 
-* **`baseApi.ts`** — Configures base URL and auth headers
-* **`authApi.ts`** — Handles login/register/me endpoints
-* **`prosApi.ts`** — Fetches and transforms professionals into a flat array
-* **TransformResponse** — Normalizes Strapi’s `{ id, attributes }` to `{ id, ...attributes }`
+- **`baseApi.ts`** — Configures base URL and auth headers
+- **`authApi.ts`** — Handles login/register/me endpoints
+- **`prosApi.ts`** — Fetches and transforms professionals into a flat array
+- **TransformResponse** — Normalizes Strapi’s `{ id, attributes }` to `{ id, ...attributes }`
 
 ---
 
@@ -223,32 +222,57 @@ Backend → `http://localhost:1337/admin`
 
 ---
 
-## 🧪 Testing (next phase)
+## 🧪 Testing
 
-**Unit tests**
+### 🧩 Unit Tests (Jest + React Testing Library)
 
-* Framework: Jest + React Testing Library
-Components tested:
+**Coverage Summary**
 
-InputField — label rendering, user input, ref forwarding
+| Folder / File               | Statements | Branches   | Functions  | Lines      |
+| --------------------------- | ---------- | ---------- | ---------- | ---------- |
+| **All Files (Total)**       | **81.35%** | **71.50%** | **68.05%** | **83.17%** |
+| `api/`                      | 25.58%     | 0%         | 18.18%     | 26.19%     |
+| ├── authApi.ts              | 50%        | 100%       | 25%        | 50%        |
+| ├── baseApi.ts              | 33.33%     | 0%         | 50%        | 40%        |
+| ├── prosApi.ts              | 15%        | 0%         | 11.11%     | 15%        |
+| ├── servicesApi.ts          | 27.27%     | 0%         | 14.28%     | 27.27%     |
+| └── strapi.types.ts         | 0%         | 0%         | 0%         | 0%         |
+| `app/`                      | 100%       | 100%       | 100%       | 100%       |
+| `component/`                | 83.87%     | 68.18%     | 87.5%      | 96.29%     |
+| ├── InputField.tsx          | 100%       | 100%       | 100%       | 100%       |
+| ├── ServiceCard.tsx         | 100%       | 100%       | 100%       | 100%       |
+| └── ServiceCarousel.tsx     | 79.16%     | 50%        | 83.33%     | 95%        |
+| `config/`                   | 100%       | 100%       | 100%       | 100%       |
+| `features/auth/`            | 98.07%     | 87.5%      | 100%       | 98.07%     |
+| ├── Login.tsx               | 100%       | 85%        | 100%       | 100%       |
+| ├── Register.tsx            | 95.23%     | 89.28%     | 100%       | 95.23%     |
+| └── authSlice.ts            | 100%       | 100%       | 100%       | 100%       |
+| `layout/`                   | 91.48%     | 73.33%     | 83.33%     | 97.36%     |
+| ├── AppLayout.tsx           | 100%       | 100%       | 100%       | 100%       |
+| ├── Footer.tsx              | 100%       | 100%       | 100%       | 100%       |
+| ├── HeaderNav.tsx           | 90.47%     | 73.33%     | 80%        | 96.96%     |
+| └── MainLayout.tsx          | 100%       | 100%       | 100%       | 100%       |
+| `pages/`                    | 100%       | 100%       | 100%       | 100%       |
+| `pages/professionals/`      | 95.65%     | 73.33%     | 90%        | 95%        |
+| ├── ProfessionalProfile.tsx | 93.75%     | 60%        | 66.66%     | 92.3%      |
+| └── Professionals.tsx       | 96.66%     | 78.18%     | 100%       | 96.29%     |
+| `utils/`                    | 100%       | 100%       | 100%       | 100%       |
+| └── strapi.ts               | 100%       | 100%       | 100%       | 100%       |
 
-ServiceCard — image fallback, null handling, router link
+**Highlights**
 
-Helper tested:
+- ✅ **Overall coverage:** 81%+ statements and 83%+ lines across the project
+- ✅ 100% coverage on all key utilities (`strapi.ts`), hooks, and configuration files
+- ✅ Near-perfect coverage on authentication (`Login`, `Register`, `authSlice`)
+- ✅ Strong component test coverage (InputField, ServiceCard, ServiceCarousel)
+- 🧠 APIs have partial coverage (mocked via RTK Query); integration covered via Cypress
 
-toAbsoluteUrl (Strapi URL utility)
+**Command to run coverage:**
 
-| File                       | Statements | Branches | Functions | Lines    |
-| -------------------------- | ---------- | -------- | --------- | -------- |
-| InputField.tsx             | 100%       | 100%     | 100%      | 100%     |
-| ServiceCard.tsx            | 100%       | 100%     | 100%      | 100%     |
-| strapi.ts                  | 100%       | 100%     | 100%      | 100%     |
-| **Total Project Coverage** | **100%**   | **100%** | **100%**  | **100%** |
-
-Command to run full coverage:
-
+````bash
 npx vitest run --coverage
 open coverage/index.html
+
 
 🧩 Testing Strategy
 
@@ -284,20 +308,21 @@ Example commands:
 npm run test
 npm run cypress:open
 npm run cypress:run
-```
+````
 
 🧾 Testing Documentation Summary
 
 Unit tests achieved 100% coverage across all components and utilities, validating both normal and edge cases.
 Cypress tests verify full user journeys including authentication, search, and navigation.
 Together, these test suites ensure application stability, functionality, and confidence in future iterations.
+
 ---
 
 ## 📦 Deployment
 
-* **Backend:** Deploy Strapi to Render, Railway, or Heroku
-* **Frontend:** Deploy React app to Vercel or Netlify
-* Update `VITE_API_URL` to your deployed Strapi endpoint.
+- **Backend:** Deploy Strapi to Render, Railway, or Heroku
+- **Frontend:** Deploy React app to Vercel or Netlify
+- Update `VITE_API_URL` to your deployed Strapi endpoint.
 
 ---
 
@@ -319,23 +344,23 @@ Paste your screenshots here before submission:
 
 ### ✅ Login Page
 
-*(Insert screenshot here)*
+_(Insert screenshot here)_
 
 ### ✅ Professionals List with Search
 
-*(Insert screenshot here)*
+_(Insert screenshot here)_
 
 ### ✅ Authenticated Header + Logout Dropdown
 
-*(Insert screenshot here)*
+_(Insert screenshot here)_
 
 ### ✅ Test Coverage Report
 
-*(Insert Jest/Cypress coverage screenshot here)*
+_(Insert Jest/Cypress coverage screenshot here)_
 
 ### ✅ Cypress Test Runner
 
-*(Insert Cypress green tests screenshot here)*
+_(Insert Cypress green tests screenshot here)_
 
 ---
 

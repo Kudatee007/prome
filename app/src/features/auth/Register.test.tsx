@@ -172,4 +172,32 @@ describe("Register Component", () => {
       { timeout: 2000 }
     );
   });
+
+  it('displays server error message', () => {
+    mockError = {
+      data: {
+        error: {
+          message: 'Email already exists'
+        }
+      }
+    };
+    mockIsLoading = false;
+
+    renderRegister();
+    
+    expect(screen.getByTestId('register-error')).toBeInTheDocument();
+    expect(screen.getByText('Email already exists')).toBeInTheDocument();
+  });
+
+  it('displays default error message when error has no message', () => {
+    mockError = {
+      data: {}
+    };
+    mockIsLoading = false;
+
+    renderRegister();
+    
+    expect(screen.getByTestId('register-error')).toBeInTheDocument();
+    expect(screen.getByText('Register failed')).toBeInTheDocument();
+  });
 });
