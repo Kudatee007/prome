@@ -33,6 +33,10 @@ const ServiceCarousel = ({ category, title }: ServiceCarouselProps) => {
   if (isLoading) return <p>Loading {title}...</p>;
   if (!services || services.length === 0) return null;
 
+
+  console.log(services);
+  
+
   return (
     <div>
       <section>

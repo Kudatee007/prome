@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "name": "Kelechi Okafor Enterprises",
+        "category": "EventService",
+        "introduction": "We combine craftsmanship with modern tools to get the job done right.",
+        "about": "Our team blends experienced professionals with young innovators. We prioritize customer success through transparent processes, regular updates, and measurable outcomes.",
+        "payment_methods": ["Cash", "Bank Transfer"],
+        "address": "28 Sapele Rd, Lekki, Owerri, Nigeria",
+        "images": {
+          "id": 1,
+          "image_url": "https://picsum.photos/seed/kelechi-okafor-enterprises-1000/1200/800",
+          "thumbnail_url": "https://picsum.photos/seed/kelechi-okafor-enterprises-1000/480/320"
+        },
+        "hires": 782,
+        "years_in_business": 8,
+        "employees": 9
+      }
+    }
+  ],
+  "meta": {
+    "pagination": { "page": 1, "pageSize": 25, "pageCount": 1, "total": 1 }
+  }
+}

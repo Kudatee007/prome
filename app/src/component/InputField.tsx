@@ -2,10 +2,14 @@ import React from "react";
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  className?: string;
+  placeholder?: string;
+  "data-testid"?: string; // Explicitly type data-testid
 }
 
 const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
-  ({ label, type = "text", name, className = "", ...rest }, ref) => {
+  ({ label, type = "text", name, id, placeholder, className = "", ...rest }, ref) => {
+    const inputId = id || name;
     return (
       <div className="flex flex-col w-full space-y-1">
         {label && (
@@ -19,9 +23,10 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         <div className="relative">
           <input
             ref={ref}
-            id={name}
+            id={inputId}
             name={name}
             type={type}
+            placeholder={placeholder}
             className={`w-full py-3 px-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition-all ${className}`}
             {...rest}
           />

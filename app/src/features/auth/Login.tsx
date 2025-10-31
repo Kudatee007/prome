@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../../component/InputField";
-import { useLoginMutation, useMeQuery } from "@/api/authApi";
-import { loginSucceeded, setUser } from "./authSlice";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useLoginMutation } from "@/api/authApi";
+import { loginSucceeded } from "./authSlice";
+import { useAppDispatch } from "@/app/hooks";
 import { useNavigate } from "react-router-dom";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
@@ -15,7 +15,7 @@ type LoginForm = {
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const token = useAppSelector((s) => s.auth.token);
+  // const token = useAppSelector((s) => s.auth.token);
 
   const {
     register,
@@ -28,23 +28,22 @@ const Login: React.FC = () => {
   const [login, { error, isLoading }] = useLoginMutation();
 
   const onSubmit = handleSubmit(async (values) => {
-    const res = await login({
-      identifier: values.email,
-      password: values.password,
-    }).unwrap();
+    try {
+      const res = await login({
+        identifier: values.email,
+        password: values.password,
+      }).unwrap();
 
-    // Save token + user to Redux/localStorage
-    dispatch(loginSucceeded({ token: res.jwt, user: res.user }));
+      // Save token + user to Redux
+      dispatch(loginSucceeded({ token: res.jwt, user: res.user }));
 
-    // redirect after successful login
-    navigate("/", { replace: true });
+      // Redirect after successful login
+      navigate("/", { replace: true });
+    } catch (err) {
+      // Error is already captured in the `error` state
+      console.error("Login failed:", err);
+    }
   });
-
-  // Only fetch /users/me after we have a token
-  const { data: me } = useMeQuery(undefined, { skip: !token });
-  useEffect(() => {
-    if (me) dispatch(setUser(me));
-  }, [me, dispatch]);
 
   const getErrorMessage = (error: unknown): string => {
     if (error && typeof error === "object" && "data" in error) {
@@ -60,6 +59,9 @@ const Login: React.FC = () => {
     }
     return "Login failed";
   };
+
+  // if (isLoading) return <p data-testid="loading-state">Loading...</p>;
+  // if (error) return <p data-testid="error-state">Error loading professional</p>;
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">

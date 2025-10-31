@@ -14,8 +14,8 @@ const ProfessionalProfile = () => {
   const { id } = useParams<{ id: string }>();
   const { data: pro, isLoading, error } = useGetProfessionalQuery(id!);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading professional</p>;
+  if (isLoading) return <p data-testid="loading-state">Loading...</p>;
+  if (error) return <p data-testid="error-state">Error loading professional</p>;
   if (!pro) return <p>Professional not found</p>;
 
   console.log(pro);
