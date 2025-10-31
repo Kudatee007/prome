@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "cy:open": "cypress open",
+    "cypress:run": "cypress run --headless",
+    "cypress:headed": "cypress run --headed"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.1",

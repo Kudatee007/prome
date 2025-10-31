@@ -35,3 +35,21 @@
 //     }
 //   }
 // }
+
+// cypress/support/commands.ts
+Cypress.Commands.add("loginByApi", (email = "timmy@example.com", password = "Password123") => {
+    // Option A: real login against Strapi
+    // return cy.request('POST', `${Cypress.env('API_URL')}/auth/local`, { identifier: email, password })
+    //   .then(resp => {
+    //     window.localStorage.setItem('pl_token', resp.body.jwt);
+    //     return resp;
+    //   });
+  
+    // Option B: stubbed login (set token + user)
+    cy.fixture("auth_login.json").then((body) => {
+      window.localStorage.setItem("pl_token", body.jwt);
+      // store user in localStorage if you read from it
+      window.localStorage.setItem("auth_user", JSON.stringify(body.user));
+    });
+  });
+  
