@@ -1,80 +1,6 @@
-<!-- # React + TypeScript + Vite
+# Prome — React + TypeScript + Strapi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-``` -->
-
-# 🧭 ProLinker — React + TypeScript + Strapi
-
-**ProLinker** is a full-stack web app built with **React + TypeScript (Vite)** on the frontend and **Strapi** as the backend CMS.
+**Prome** is a full-stack web app built with **React + TypeScript (Vite)** on the frontend and **Strapi** as the backend CMS.
 It helps users connect with verified **professionals for hire** while managing authentication, profile listings, and responsive UI.
 
 ---
@@ -117,7 +43,7 @@ It helps users connect with verified **professionals for hire** while managing a
 
 ---
 
-## 🔐 Authentication Flow
+## Authentication Flow
 
 | Action     | Endpoint                    | Description                     |
 | ---------- | --------------------------- | ------------------------------- |
@@ -132,7 +58,7 @@ It helps users connect with verified **professionals for hire** while managing a
 
 ---
 
-## 💼 Professionals Feature
+## Professionals Feature
 
 - Fetches data from **Strapi `/professionals`** collection
 - Displays: name, location, years in business, employees, image, and bio
@@ -154,7 +80,7 @@ It helps users connect with verified **professionals for hire** while managing a
 
 ---
 
-## 🧰 Environment Setup
+## Environment Setup
 
 ### Backend (.env)
 
@@ -274,11 +200,11 @@ npx vitest run --coverage
 open coverage/index.html
 
 
-🧩 Testing Strategy
+Testing Strategy
 
 The project follows a logic-first testing approach:
 
-Components are tested in isolation using MemoryRouter where routing is required.
+Components are tested in isolation using BrowserRouter where routing is required.
 
 Helper utilities are tested directly for both happy and edge cases.
 
@@ -290,7 +216,7 @@ Tests use clear and descriptive assertions (getByRole, toHaveValue, toHaveAttrib
 
 * Cypress for login/register flow, protected routes, and professionals search
 
-🧩 E2E Testing (Cypress)
+E2E Testing (Cypress)
 
 Cypress tests validate complete user journeys:
 
@@ -310,7 +236,7 @@ npm run cypress:open
 npm run cypress:run
 ````
 
-🧾 Testing Documentation Summary
+Testing Documentation Summary
 
 Unit tests achieved 100% coverage across all components and utilities, validating both normal and edge cases.
 Cypress tests verify full user journeys including authentication, search, and navigation.
@@ -318,7 +244,7 @@ Together, these test suites ensure application stability, functionality, and con
 
 ---
 
-## 📦 Deployment
+## Deployment
 
 - **Backend:** Deploy Strapi to Render, Railway, or Heroku
 - **Frontend:** Deploy React app to Vercel or Netlify
@@ -326,7 +252,7 @@ Together, these test suites ensure application stability, functionality, and con
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 1. Profile view/edit page for authenticated professionals
 2. Filter by category, location, and rating
@@ -337,28 +263,28 @@ Together, these test suites ensure application stability, functionality, and con
 
 ---
 
-## 🖼️ Screenshots & Coverage Evidence
+## Screenshots & Coverage Evidence
 
 This section is reserved for screenshots and evaluation proof.
 Paste your screenshots here before submission:
 
-### ✅ Login Page
+### Login Page
 
 _(Insert screenshot here)_
 
-### ✅ Professionals List with Search
+### Professionals List with Search
 
 _(Insert screenshot here)_
 
-### ✅ Authenticated Header + Logout Dropdown
+### Authenticated Header + Logout Dropdown
 
 _(Insert screenshot here)_
 
-### ✅ Test Coverage Report
+### Test Coverage Report
 
 _(Insert Jest/Cypress coverage screenshot here)_
 
-### ✅ Cypress Test Runner
+### Cypress Test Runner
 
 _(Insert Cypress green tests screenshot here)_
 
@@ -366,5 +292,5 @@ _(Insert Cypress green tests screenshot here)_
 
 ## 💡 Developer
 
-👨🏽‍💻 **Ademola Adekilekun**
+👨🏽‍💻 **Timilehin Kudaisi**
 Built with ❤️ using React, TypeScript, and Strapi.
