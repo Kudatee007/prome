@@ -11,7 +11,13 @@ const Register = lazy(() => import("./features/auth/Register"));
 function App() {
   return (
     <>
-      <Suspense fallback={<div className="container">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="h-screen w-full flex justify-center items-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+          </div>
+        }
+      >
         <Routes>
           {/* Routes with hero */}
           <Route element={<MainLayout />}>
@@ -23,7 +29,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/professionals" element={<Professionals />} />
-            <Route path="/professionals/:id" element={<ProfessionalProfile />} />
+            <Route
+              path="/professionals/:id"
+              element={<ProfessionalProfile />}
+            />
           </Route>
         </Routes>
       </Suspense>

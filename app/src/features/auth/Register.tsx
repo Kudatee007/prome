@@ -58,14 +58,6 @@ const Register: React.FC = () => {
     }
   });
 
-  // const getErrorMessage = (error: unknown): string => {
-  //   if (error && typeof error === "object" && "data" in error) {
-  //     const err = error as unknown;
-  //     return err?.data?.error?.message ?? "Registration failed";
-  //   }
-  //   return "Registration failed";
-  // };
-
    const getErrorMessage = (error: unknown): string => {
       if (error && typeof error === "object" && "data" in error) {
         const fetchError = error as FetchBaseQueryError;
@@ -80,6 +72,15 @@ const Register: React.FC = () => {
       }
       return "Register failed";
     };
+
+    if (isLoading)
+      return (
+        <div className="h-screen w-full flex justify-center items-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+        </div>
+      );
+    if (error) return <p data-testid="error-state">Error loading Page</p>;
+
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">

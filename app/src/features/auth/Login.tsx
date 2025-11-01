@@ -60,8 +60,13 @@ const Login: React.FC = () => {
     return "Login failed";
   };
 
-  // if (isLoading) return <p data-testid="loading-state">Loading...</p>;
-  // if (error) return <p data-testid="error-state">Error loading professional</p>;
+  if (isLoading)
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+      </div>
+    );
+  if (error) return <p data-testid="error-state">Error loading Page</p>;
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">

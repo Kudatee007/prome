@@ -40,7 +40,12 @@ const Professionals = () => {
   // Fetch all unique locations
   const { data: locations } = useGetLocationsQuery();
 
-  if (isLoading) return <p data-testid="loading-state">Loading…</p>;
+  if (isLoading)
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+      </div>
+    );
   if (error) {
     console.error("Error details:", error);
     return <p data-testid="error-state">Failed to load professionals</p>;
