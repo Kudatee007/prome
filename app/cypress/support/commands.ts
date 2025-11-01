@@ -40,14 +40,14 @@
 Cypress.Commands.add(
   "loginByApi",
   (email = "timmy@example.com", password = "Password123") => {
-    // Option A: real login against Strapi
-    // return cy.request('POST', `${Cypress.env('API_URL')}/auth/local`, { identifier: email, password })
-    //   .then(resp => {
-    //     window.localStorage.setItem('pl_token', resp.body.jwt);
-    //     return resp;
-    //   });
+    // real login against Strapi
+    return cy.request('POST', `${Cypress.env('API_URL')}/auth/local`, { identifier: email, password })
+      .then(resp => {
+        window.localStorage.setItem('pl_token', resp.body.jwt);
+        return resp;
+      });
 
-    // Option B: stubbed login (set token + user)
+    // stubbed login
     cy.fixture("auth_login.json").then((body) => {
       window.localStorage.setItem("pl_token", body.jwt);
       // store user in localStorage if you read from it
@@ -55,21 +55,3 @@ Cypress.Commands.add(
     });
   }
 );
-
-Cypress.Commands.add("stubLogin", () => {
-  cy.intercept("POST", "**/auth/local", { fixture: "auth_login.json" }).as(
-    "postAuth"
-  );
-});
-
-Cypress.Commands.add("loginByFixture", () => {
-  cy.fixture("auth_login.json").then((body) => {
-    window.localStorage.setItem("pl_token", body.jwt);
-    window.localStorage.setItem("auth_user", JSON.stringify(body.user));
-  });
-});
-
-Cypress.Commands.add("logoutLocal", () => {
-  window.localStorage.removeItem("pl_token");
-  window.localStorage.removeItem("auth_user");
-});
