@@ -1,0 +1,24 @@
+{
+    "data": {
+      "id": 1,
+      "documentId": "pro-1",
+      "name": "John's Cleaning Service",
+      "category": "Cleaning",
+      "location": "New York",
+      "address": "123 Main St",
+      "introduction": "Professional cleaning service with 5 years of experience",
+      "about": "We provide top-notch cleaning services for homes and offices.",
+      "hires": 50,
+      "years_in_business": 5,
+      "employees": 10,
+      "phone_number": "555-0100",
+      "email": "john@cleaning.com",
+      "payment_methods": ["Cash", "Credit Card", "PayPal"],
+      "images": {
+        "thumbnail_url": "/uploads/thumb1.jpg",
+        "image_url": "/uploads/image1.jpg"
+      },
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }

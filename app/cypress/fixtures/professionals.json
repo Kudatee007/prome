@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "ehtrbt9d4ir0rpprjsz2xmna",
+      "name": "Kelechi Okafor Enterprises",
+      "category": "EventService",
+      "years_in_business": 8,
+      "employees": 9,
+      "address": "28 Sapele Rd, Lekki, Owerri, Nigeria",
+      "hires": 762,
+      "introduction": "We combine craftsmanship with modern tools to get the job done right.",
+      "about": "Our team blends experienced professionals with young innovators. We prioritize customer success through transparent processes, regular updates, and measurable outcomes.",
+      "payment_methods": [
+        "Cash",
+        "Bank Transfer"
+      ],
+      "images": {
+        "image_url": "https://picsum.photos/seed/kelechi-okafor-enterprises-1000/1200/800",
+        "thumbnail_url": "https://picsum.photos/seed/kelechi-okafor-enterprises-1000/480/320"
+      },
+      "created_seed_at": "2025-10-24T03:34:44.296547Z"
+    },
+    {
+      "id": 2,
+      "name": "Grace Eze Solutions",
+      "category": "Home Improvement",
+      "years_in_business": 20,
+      "employees": 2,
+      "address": "52 Sapele Rd, GRA, Kano, Nigeria",
+      "hires": 582,
+      "introduction": "We combine craftsmanship with modern tools to get the job done right.",
+      "about": "We invest in continuous learning, modern tooling, and rigorous QA to ensure every project meets a high standard of excellence.",
+      "payment_methods": [
+        "Bank Transfer",
+        "Card"
+      ],
+      "images": null,
+      "created_seed_at": "2025-10-24T03:34:44.296574Z"
+    }
+  ]
+}
