@@ -43,7 +43,12 @@ const ProfessionalProfile = () => {
           loading="lazy"
         />
         <div>
-          <h2 className="text-black-100 font-medium text-2xl">{pro.name}</h2>
+          <h2
+            className="text-black-100 font-medium text-2xl"
+            data-testid="pro-detail-name"
+          >
+            {pro.name}
+          </h2>
           <p className="text-xl">{pro.category}</p>
         </div>
       </div>
