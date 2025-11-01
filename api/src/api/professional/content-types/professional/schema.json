@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "professionals",
+  "info": {
+    "singularName": "professional",
+    "pluralName": "professionals",
+    "displayName": "Professionals"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "years_in_business": {
+      "type": "integer"
+    },
+    "employees": {
+      "type": "integer"
+    },
+    "address": {
+      "type": "string"
+    },
+    "hires": {
+      "type": "integer"
+    },
+    "introduction": {
+      "type": "text"
+    },
+    "about": {
+      "type": "richtext"
+    },
+    "payment_methods": {
+      "type": "json"
+    },
+    "images": {
+      "type": "component",
+      "component": "media.image",
+      "repeatable": false
+    },
+    "created_seed_at": {
+      "type": "datetime"
+    },
+    "location": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string",
+      "required": false
+    },
+    "email": {
+      "type": "email",
+      "required": false
+    }
+  }
+}
