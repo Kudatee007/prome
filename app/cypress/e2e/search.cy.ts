@@ -1,7 +1,5 @@
-// cypress/e2e/search.cy.ts (snippet)
 describe("Search & filter", () => {
     beforeEach(() => {
-      // make sure this intercept catches list calls both on page load and search
       cy.intercept("GET", "**/professionals?**", { fixture: "professionals.json" }).as("getPros");
       cy.visit("/professionals");
       cy.wait("@getPros"); // initial list load

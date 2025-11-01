@@ -50,7 +50,7 @@ Cypress.Commands.add(
     // stubbed login
     cy.fixture("auth_login.json").then((body) => {
       window.localStorage.setItem("pl_token", body.jwt);
-      // store user in localStorage if you read from it
+      // store user in localStorage
       window.localStorage.setItem("auth_user", JSON.stringify(body.user));
     });
   }

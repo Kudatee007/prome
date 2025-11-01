@@ -1,4 +1,3 @@
-// cypress/e2e/global-search.cy.ts
 describe("Global Header Search", () => {
   beforeEach(() => {
     cy.intercept("GET", "**/professionals?**", {
@@ -8,7 +7,7 @@ describe("Global Header Search", () => {
   });
 
   it("navigates to professionals page with search query and shows results", () => {
-    // header input selector (adjust data-testid or placeholder as in your HeaderNav)
+    // header input selector
     cy.get('input[placeholder="What service do you need?"]').as(
       "headerSearch"
     );
@@ -26,7 +25,7 @@ describe("Global Header Search", () => {
       .first()
       .should("contain.text", "Kelechi Okafor Enterprises");
 
-    // confirm search term persisted in input (if your page reflects it)
+    // confirm search term persisted in input
     cy.get('input[placeholder="What service do you need?"]').should(
       "have.value",
       "Kelechi"

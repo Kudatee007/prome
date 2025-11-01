@@ -67,7 +67,7 @@ describe("Full user journey (happy path)", () => {
     // Verify token stored
     cy.window().its("localStorage.pl_token").should("exist");
 
-    // header should show authenticated user chip
+    // header should show authenticated user menu
     cy.get('[data-testid="user-menu"]').first().should("exist");
     // -------------------
     // STEP 3: Header should Navigate to Professionals Page
