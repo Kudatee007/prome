@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_media_images",
+  "info": {
+    "displayName": "Image"
+  },
+  "options": {},
+  "attributes": {
+    "image_url": {
+      "type": "string"
+    },
+    "thumbnail_url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
