@@ -63,7 +63,7 @@ const Login: React.FC = () => {
   if (isLoading)
     return (
       <div className="h-screen w-full flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-100" />
       </div>
     );
   if (error) return <p data-testid="error-state">Error loading Page</p>;
