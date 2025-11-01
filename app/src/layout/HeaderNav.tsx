@@ -119,9 +119,13 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   onClick={() => setUserMenuOpen((v) => !v)}
                   aria-haspopup="menu"
                   aria-expanded={userMenuOpen}
-                  data-testid="user-chip"
+                  // data-testid="user-chip"
+                  data-testid="user-menu"
                 >
-                  <p className="h-[38px] w-[38px] bg-blue-100 text-white rounded-full flex justify-center items-center">
+                  <p
+                    className="h-[38px] w-[38px] bg-blue-100 text-white rounded-full flex justify-center items-center"
+                    aria-hidden="true"
+                  >
                     {initial}
                   </p>
                   <span>{displayName}</span>
@@ -137,7 +141,7 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-3 py-2 hover:bg-gray-50 bg-blue-100 text-white hover:text-blue-100 rounded-md border-white"
-                    data-testid="logout-desktop"
+                    data-testid="logout-button"
                   >
                     Log out
                   </button>
@@ -148,7 +152,7 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   <button
                     onClick={handleLogout}
                     className="w-full px-3 py-2 rounded-md border bg-white hover:bg-gray-50"
-                    data-testid="logout-mobile"
+                    data-testid="logout-button"
                   >
                     Log out
                   </button>
@@ -178,6 +182,7 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   onKeyPress={handleKeyPress}
                   className="border border-gray-100 w-full py-3 rounded-md lg:rounded-tl-md lg:rounded-bl-md lg:rounded-tr-none lg:rounded-br-none px-2 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:shadow-lg transition-all bg-white"
                   placeholder="What service do you need?"
+                  data-testid="header-search-input"
                 />
                 <select
                   value={selectedLocation}
