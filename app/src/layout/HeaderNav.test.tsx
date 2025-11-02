@@ -67,11 +67,11 @@ describe("HeaderNav", () => {
 
     render(<HeaderNav showHero={false} />);
 
-    // user chip visible
-    expect(screen.getByTestId("user-chip")).toBeInTheDocument();
+    // user menu visible
+    expect(screen.getByTestId("user-menu")).toBeInTheDocument();
 
     // desktop logout exists in DOM (hidden until hover/click), click chip to open
-    fireEvent.click(screen.getByTestId("user-chip"));
+    fireEvent.click(screen.getByTestId("user-menu"));
     expect(screen.getByTestId("logout-desktop")).toBeInTheDocument();
 
     // click logout

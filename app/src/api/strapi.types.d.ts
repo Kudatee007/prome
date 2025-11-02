@@ -6,19 +6,22 @@ export type ProfessionalAttrs = {
     about?: string | null;
     introduction?: string | null;
     payment_methods?: string[] | null;
-    images?: { id: number; image_url?: string | null; thumbnail_url?: string | null } | null; // single component
+    images?: {
+        id: number;
+        image_url?: string | null;
+        thumbnail_url?: string | null;
+    } | null;
     employees?: number | null;
     hires?: number | null;
     years_in_business?: number | null;
     phone_number?: string | null;
     email?: string | null;
-  
-    // Strapi timestamps/ids (keep if you use them)
     createdAt: string;
     updatedAt: string;
     publishedAt?: string;
     created_seed_at?: string;
     documentId?: string;
-  };
-
-  export type Professional = ProfessionalAttrs & { id: number };
+};
+export type Professional = ProfessionalAttrs & {
+    id: number;
+};

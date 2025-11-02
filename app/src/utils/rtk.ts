@@ -1,5 +1,31 @@
-import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+// rtk.ts
+import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 
+// Type guard to detect RTK Query fetch errors
 function isFbqError(e: unknown): e is FetchBaseQueryError {
   return typeof e === "object" && e !== null && "status" in e;
 }
+
+export const api = createApi({
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
+  endpoints: (builder) => ({
+    getUser: builder.query<any, string>({
+      query: (id) => `/users/${id}`,
+      async onQueryStarted(arg, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+        } catch (e) {
+          // Use runtime type guard
+          if (isFbqError(e)) {
+            console.error("RTK Query Error:", e.status, e.data);
+          } else {
+            console.error("Unknown Error:", e);
+          }
+        }
+      },
+    }),
+  }),
+});
+
+export const { useGetUserQuery } = api;

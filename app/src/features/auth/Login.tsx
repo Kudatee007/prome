@@ -66,7 +66,7 @@ const Login: React.FC = () => {
         <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-100" />
       </div>
     );
-  if (error) return <p data-testid="error-state">Error loading Page</p>;
+  if (error) return <p data-testid="login-error">{getErrorMessage(error)}</p>;
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">
