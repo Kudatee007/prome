@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import avatar from "../../assets/avatar.png";
 import { AiOutlineTrophy } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
@@ -43,7 +43,7 @@ const Professionals = () => {
   if (isLoading)
     return (
       <div className="h-screen w-full flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-100" data-testid="loading-state"/>
       </div>
     );
   if (error) {

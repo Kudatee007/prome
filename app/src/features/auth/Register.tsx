@@ -58,29 +58,29 @@ const Register: React.FC = () => {
     }
   });
 
-   const getErrorMessage = (error: unknown): string => {
-      if (error && typeof error === "object" && "data" in error) {
-        const fetchError = error as FetchBaseQueryError;
-        if (
-          fetchError.data &&
-          typeof fetchError.data === "object" &&
-          "error" in fetchError.data
-        ) {
-          const data = fetchError.data as { error?: { message?: string } };
-          return data.error?.message ?? "Login failed";
-        }
+  const getErrorMessage = (error: unknown): string => {
+    if (error && typeof error === "object" && "data" in error) {
+      const fetchError = error as FetchBaseQueryError;
+      if (
+        fetchError.data &&
+        typeof fetchError.data === "object" &&
+        "error" in fetchError.data
+      ) {
+        const data = fetchError.data as { error?: { message?: string } };
+        return data.error?.message ?? "Email already exists";
       }
-      return "Register failed";
-    };
+    }
+    return "Register failed";
+  };
 
-    if (isLoading)
-      return (
-        <div className="h-screen w-full flex justify-center items-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
-        </div>
-      );
-    if (error) return <p data-testid="error-state">Error loading Page</p>;
-
+  if (isLoading)
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-100" />
+      </div>
+    );
+  if (error)
+    return <p data-testid="register-error">{getErrorMessage(error)}</p>;
 
   return (
     <div className="bg-[#FAFAFA] flex justify-center items-center h-screen">

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import ServiceCard from "./ServiceCard";
 import { useGetServicesByCategoryQuery } from "@/api/servicesApi";

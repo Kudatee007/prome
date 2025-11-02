@@ -141,7 +141,7 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-3 py-2 hover:bg-gray-50 bg-blue-100 text-white hover:text-blue-100 rounded-md border-white"
-                    data-testid="logout-button"
+                    data-testid="logout-desktop"
                   >
                     Log out
                   </button>
@@ -152,7 +152,7 @@ const HeaderNav = ({ showHero = false }: HeaderNavProps) => {
                   <button
                     onClick={handleLogout}
                     className="w-full px-3 py-2 rounded-md border bg-white hover:bg-gray-50"
-                    data-testid="logout-button"
+                    data-testid="logout-mobile"
                   >
                     Log out
                   </button>

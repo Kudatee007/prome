@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import React, { createRef } from "react";
+import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import InputField from "./InputField";

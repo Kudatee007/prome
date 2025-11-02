@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import avatar from "../../assets/avatar.png";
@@ -17,7 +16,7 @@ const ProfessionalProfile = () => {
   if (isLoading)
     return (
       <div className="h-screen w-full flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" />
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary" data-testid="loading-state"/>
       </div>
     );
   if (error) return <p data-testid="error-state">Error loading professional</p>;

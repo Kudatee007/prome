@@ -29,17 +29,18 @@ It helps users connect with verified **professionals for hire** while managing a
 
 ```
 /src
-  /app           → Redux store & typed hooks
   /api           → RTK Query APIs (authApi, prosApi, baseApi)
+  /app           → Redux store & typed hooks
   /features
     /auth        → Login, Register, authSlice
-    /pros        → Professionals list, detail, search
   /layout        → AppShell, HeaderNav, Footer
-  /components    → Reusable UI (InputField, Button)
-  /routes        → Route configs, ProtectedRoute
+  /components    → Reusable UI (InputField, ServiceCard, ServiceCarousel)
   /utils         → Helpers (strapi URL utils)
-  /styles        → Global Tailwind styles
-```
+  /pages        → Professionals
+      /pros        → Professionals list, detail
+      Home
+  /assets
+    images
 
 ---
 
@@ -154,40 +155,45 @@ Backend → `http://localhost:1337/admin`
 
 **Coverage Summary**
 
-| Folder / File               | Statements | Branches   | Functions  | Lines      |
-| --------------------------- | ---------- | ---------- | ---------- | ---------- |
-| **All Files (Total)**       | **81.35%** | **71.50%** | **68.05%** | **83.17%** |
-| `api/`                      | 25.58%     | 0%         | 18.18%     | 26.19%     |
-| ├── authApi.ts              | 50%        | 100%       | 25%        | 50%        |
-| ├── baseApi.ts              | 33.33%     | 0%         | 50%        | 40%        |
-| ├── prosApi.ts              | 15%        | 0%         | 11.11%     | 15%        |
-| ├── servicesApi.ts          | 27.27%     | 0%         | 14.28%     | 27.27%     |
-| └── strapi.types.ts         | 0%         | 0%         | 0%         | 0%         |
-| `app/`                      | 100%       | 100%       | 100%       | 100%       |
-| `component/`                | 83.87%     | 68.18%     | 87.5%      | 96.29%     |
-| ├── InputField.tsx          | 100%       | 100%       | 100%       | 100%       |
-| ├── ServiceCard.tsx         | 100%       | 100%       | 100%       | 100%       |
-| └── ServiceCarousel.tsx     | 79.16%     | 50%        | 83.33%     | 95%        |
-| `config/`                   | 100%       | 100%       | 100%       | 100%       |
-| `features/auth/`            | 98.07%     | 87.5%      | 100%       | 98.07%     |
-| ├── Login.tsx               | 100%       | 85%        | 100%       | 100%       |
-| ├── Register.tsx            | 95.23%     | 89.28%     | 100%       | 95.23%     |
-| └── authSlice.ts            | 100%       | 100%       | 100%       | 100%       |
-| `layout/`                   | 91.48%     | 73.33%     | 83.33%     | 97.36%     |
-| ├── AppLayout.tsx           | 100%       | 100%       | 100%       | 100%       |
-| ├── Footer.tsx              | 100%       | 100%       | 100%       | 100%       |
-| ├── HeaderNav.tsx           | 90.47%     | 73.33%     | 80%        | 96.96%     |
-| └── MainLayout.tsx          | 100%       | 100%       | 100%       | 100%       |
-| `pages/`                    | 100%       | 100%       | 100%       | 100%       |
-| `pages/professionals/`      | 95.65%     | 73.33%     | 90%        | 95%        |
-| ├── ProfessionalProfile.tsx | 93.75%     | 60%        | 66.66%     | 92.3%      |
-| └── Professionals.tsx       | 96.66%     | 78.18%     | 100%       | 96.29%     |
-| `utils/`                    | 100%       | 100%       | 100%       | 100%       |
-| └── strapi.ts               | 100%       | 100%       | 100%       | 100%       |
+--------------------------|---------|----------|---------|---------|-------------------
+File                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------------|---------|----------|---------|---------|-------------------
+All files                 |   81.14 |    70.44 |   68.05 |   82.95 |                   
+ api                      |   25.58 |        0 |   18.18 |   26.19 |                   
+  authApi.ts              |      50 |      100 |      25 |      50 | 18-26             
+  baseApi.ts              |   33.33 |        0 |      50 |      40 | 9-11              
+  prosApi.ts              |      15 |        0 |   11.11 |      15 | 18-57             
+  servicesApi.ts          |   27.27 |        0 |   14.28 |   27.27 | 34-56             
+  strapi.types.ts         |       0 |        0 |       0 |       0 |                   
+ app                      |     100 |      100 |     100 |     100 |                   
+  hooks.ts                |     100 |      100 |     100 |     100 |                   
+ component                |   83.87 |    68.18 |    87.5 |   96.29 |                   
+  InputField.tsx          |     100 |      100 |     100 |     100 |                   
+  ServiceCard.tsx         |     100 |      100 |     100 |     100 |                   
+  ServiceCarousel.tsx     |   79.16 |       50 |   83.33 |      95 | 69                
+ config                   |     100 |      100 |     100 |     100 |                   
+  constants.ts            |     100 |      100 |     100 |     100 |                   
+ features/auth            |      95 |    82.14 |     100 |   94.91 |                   
+  Login.tsx               |   95.65 |    79.16 |     100 |   95.45 | 64                
+  Register.tsx            |      92 |    84.37 |     100 |      92 | 57,77             
+  authSlice.ts            |     100 |      100 |     100 |     100 |                   
+ layout                   |   91.48 |    73.33 |   83.33 |   97.36 |                   
+  AppLayout.tsx           |     100 |      100 |     100 |     100 |                   
+  Footer.tsx              |     100 |      100 |     100 |     100 |                   
+  HeaderNav.tsx           |   90.47 |    73.33 |      80 |   96.96 | 37                
+  MainLayout.tsx          |     100 |      100 |     100 |     100 |                   
+ pages                    |     100 |      100 |     100 |     100 |                   
+  Home.tsx                |     100 |      100 |     100 |     100 |                   
+ pages/professionals      |   95.65 |    72.72 |      90 |   95.23 |                   
+  ProfessionalProfile.tsx |   93.75 |       60 |   66.66 |   92.85 | 37                
+  Professionals.tsx       |   96.66 |    77.19 |     100 |   96.42 | 54                
+ utils                    |     100 |      100 |     100 |     100 |                   
+  strapi.ts               |     100 |      100 |     100 |     100 |                   
+--------------------------|---------|----------|---------|---------|-------------------
 
 **Highlights**
 
-- ✅ **Overall coverage:** 81%+ statements and 83%+ lines across the project
+- ✅ **Overall coverage:** 81%+ statements and 82%+ lines across the project
 - ✅ 100% coverage on all key utilities (`strapi.ts`), hooks, and configuration files
 - ✅ Near-perfect coverage on authentication (`Login`, `Register`, `authSlice`)
 - ✅ Strong component test coverage (InputField, ServiceCard, ServiceCarousel)
@@ -222,11 +228,10 @@ Cypress tests validate complete user journeys:
 
 User registration and login flow
 
-Navigation between pages (home, professionals)
 
 Search and protected route access
 
-Input validation and error handling
+User user journey
 
 Example commands:
 
@@ -238,7 +243,7 @@ npm run cypress:run
 
 Testing Documentation Summary
 
-Unit tests achieved 100% coverage across all components and utilities, validating both normal and edge cases.
+Unit tests achieved 81%+ coverage across all components and utilities, validating both normal and edge cases.
 Cypress tests verify full user journeys including authentication, search, and navigation.
 Together, these test suites ensure application stability, functionality, and confidence in future iterations.
 
@@ -270,27 +275,21 @@ Paste your screenshots here before submission:
 
 ### Login Page
 
-_(Insert screenshot here)_
+![Login Page]("./src/assets/screenshots/ScreenshotLoginScreen.png")
 
 ### Professionals List with Search
 
-_(Insert screenshot here)_
+![Professional List]("./src/assets/screenshots/ScreenshotProfessionalList.png")
 
 ### Authenticated Header + Logout Dropdown
 
-_(Insert screenshot here)_
+![Authenticated Header Screenshot]("./src/assets/screenshots/ScreenshotHeaderLogout.png")
 
 ### Test Coverage Report
 
-_(Insert Jest/Cypress coverage screenshot here)_
-
-### Cypress Test Runner
-
-_(Insert Cypress green tests screenshot here)_
-
----
+![Coverage Report Screenshot]("./src/assets/screenshots/ScreenshotTestCoverage.png")
 
 ## 💡 Developer
 
 👨🏽‍💻 **Timilehin Kudaisi**
-Built with ❤️ using React, TypeScript, and Strapi.
+Built with using React, TypeScript, and Strapi.

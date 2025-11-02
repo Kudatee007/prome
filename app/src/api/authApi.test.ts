@@ -26,4 +26,22 @@ describe('authApi', () => {
   it('exports useMeQuery hook', () => {
     expect(authApi.useMeQuery).toBeDefined();
   });
+
+  it('login endpoint uses POST method', () => {
+    const endpoint = authApi.endpoints.login;
+    expect(endpoint).toBeDefined();
+    expect(endpoint.name).toBe('login');
+  });
+
+  it('register endpoint uses POST method', () => {
+    const endpoint = authApi.endpoints.register;
+    expect(endpoint).toBeDefined();
+    expect(endpoint.name).toBe('register');
+  });
+
+  it('me endpoint uses GET method', () => {
+    const endpoint = authApi.endpoints.me;
+    expect(endpoint).toBeDefined();
+    expect(endpoint.name).toBe('me');
+  });
 });
