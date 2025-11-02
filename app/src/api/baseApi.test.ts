@@ -1,7 +1,7 @@
 // Save as: src/api/baseApi.test.ts
 import { describe, it, expect, beforeEach } from "vitest";
 import { baseApi } from "./baseApi";
-import { JWT_STORAGE_KEY } from "@/config/constants";
+import { JWT_STORAGE_KEY } from "../config/constants";
 
 // Mock localStorage
 const localStorageMock = (() => {

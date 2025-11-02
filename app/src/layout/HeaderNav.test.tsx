@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import HeaderNav from "./HeaderNav";
-import React from "react";
 
 // ---- Mocks ----
 // 1) Auth hooks

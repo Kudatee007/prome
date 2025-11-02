@@ -96,7 +96,7 @@ export declare const useGetProfessionalsQuery: <R extends Record<string, any> = 
     isError: false;
 }, "error">>)> & {
     status: import("@reduxjs/toolkit/query").QueryStatus;
-}>(arg: void | ProfessionalSearchParams | typeof import("@reduxjs/toolkit/query").skipToken, options?: (import("@reduxjs/toolkit/query").SubscriptionOptions & {
+}>(arg: void | typeof import("@reduxjs/toolkit/query").skipToken | ProfessionalSearchParams, options?: (import("@reduxjs/toolkit/query").SubscriptionOptions & {
     skip?: boolean;
     refetchOnMountOrArgChange?: boolean | number;
 } & {

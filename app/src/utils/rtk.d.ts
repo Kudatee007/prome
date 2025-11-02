@@ -1,4 +1,4 @@
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 export declare const api: import("@reduxjs/toolkit/query").Api<import("@reduxjs/toolkit/query").BaseQueryFn<string | import("@reduxjs/toolkit/query").FetchArgs, unknown, FetchBaseQueryError, {}, import("@reduxjs/toolkit/query").FetchBaseQueryMeta>, {
     getUser: import("@reduxjs/toolkit/query").QueryDefinition<string, import("@reduxjs/toolkit/query").BaseQueryFn<string | import("@reduxjs/toolkit/query").FetchArgs, unknown, FetchBaseQueryError, {}, import("@reduxjs/toolkit/query").FetchBaseQueryMeta>, never, any, "api", unknown>;
 }, "api", never, typeof import("@reduxjs/toolkit/query").coreModuleName | typeof import("@reduxjs/toolkit/query/react").reactHooksModuleName>;
@@ -38,7 +38,7 @@ export declare const useGetUserQuery: <R extends Record<string, any> = import("@
     isFetching: false;
     isSuccess: false;
     isError: false;
-}, "data" | "error" | "fulfilledTimeStamp" | "isFetching" | "isSuccess"> & {
+}, "error" | "data" | "fulfilledTimeStamp" | "isFetching" | "isSuccess"> & {
     isSuccess: true;
     isFetching: true;
     error: undefined;
@@ -58,7 +58,7 @@ export declare const useGetUserQuery: <R extends Record<string, any> = import("@
     isFetching: false;
     isSuccess: false;
     isError: false;
-}, "data" | "error" | "fulfilledTimeStamp" | "currentData" | "isFetching" | "isSuccess"> & {
+}, "error" | "data" | "fulfilledTimeStamp" | "currentData" | "isFetching" | "isSuccess"> & {
     isSuccess: true;
     isFetching: false;
     error: undefined;
@@ -131,7 +131,7 @@ export declare const useGetUserQuery: <R extends Record<string, any> = import("@
         isFetching: false;
         isSuccess: false;
         isError: false;
-    }, "data" | "error" | "fulfilledTimeStamp" | "isFetching" | "isSuccess"> & {
+    }, "error" | "data" | "fulfilledTimeStamp" | "isFetching" | "isSuccess"> & {
         isSuccess: true;
         isFetching: true;
         error: undefined;
@@ -151,7 +151,7 @@ export declare const useGetUserQuery: <R extends Record<string, any> = import("@
         isFetching: false;
         isSuccess: false;
         isError: false;
-    }, "data" | "error" | "fulfilledTimeStamp" | "currentData" | "isFetching" | "isSuccess"> & {
+    }, "error" | "data" | "fulfilledTimeStamp" | "currentData" | "isFetching" | "isSuccess"> & {
         isSuccess: true;
         isFetching: false;
         error: undefined;

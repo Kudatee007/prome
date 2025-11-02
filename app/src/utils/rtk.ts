@@ -1,5 +1,6 @@
 // rtk.ts
-import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 // Type guard to detect RTK Query fetch errors
 function isFbqError(e: unknown): e is FetchBaseQueryError {
@@ -12,7 +13,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getUser: builder.query<any, string>({
       query: (id) => `/users/${id}`,
-      async onQueryStarted(arg, { queryFulfilled }) {
+      async onQueryStarted(_arg, { queryFulfilled }) {
         try {
           await queryFulfilled;
         } catch (e) {

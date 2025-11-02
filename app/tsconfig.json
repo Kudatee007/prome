@@ -15,9 +15,6 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    // "types": ["jest"]
-    // "types": ["vitest/globals"],
-    "types": ["cypress"]
-  },
-  "include": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+    "types": ["vitest/globals"]
+  }
 }

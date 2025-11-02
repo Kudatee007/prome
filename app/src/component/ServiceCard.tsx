@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import cardImg from "../assets/cardImg.png";
 import { toAbsoluteUrl } from "@/utils/strapi";
