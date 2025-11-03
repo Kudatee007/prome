@@ -6,4 +6,6 @@ dist/
 api/.tmp/
 api/build/
 app/coverage/
+api
+.DS_Store
 
